@@ -33,6 +33,13 @@ class StudentGradesManager:
             for name, grades in self.student_records.items():
                 print(f"{name}: {grades}")
 
+    def delete_student(self, name):
+        if name in self.student_records:
+            del self.student_records[name]
+            print(f"Student {name} deleted.")
+        else:
+            print(f"Student {name} does not exist.")
+
 
 def main():
     manager = StudentGradesManager()
@@ -43,9 +50,10 @@ def main():
         print("2. Add Grade")
         print("3. Calculate Average")
         print("4. Display All Students")
-        print("5. Exit")
+        print("5. Delete Student")
+        print("6. Exit")
 
-        choice = input("Enter your choice (1-5): ")
+        choice = input("Enter your choice (1-6): ")
 
         if choice == '1':
             name = input("Enter student's name: ")
@@ -60,6 +68,9 @@ def main():
         elif choice == '4':
             manager.display_all_students()
         elif choice == '5':
+            name = input("Enter student's name: ")
+            manager.delete_student(name)
+        elif choice == '6':
             print("Exiting...")
             break
         else:
